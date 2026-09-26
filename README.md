@@ -1,9 +1,9 @@
 # Aurora — Personal Task Manager (Laravel Mini Project)
 
-Project Code: WST21-PM-2026-SF
-Student Name:GARY BENZ VICTOR LIM
-Course & Year:BSIT 2
-Database Used: MySQL 
+-**Project Code:** WST21-PM-2026-SF
+- **Student Name:** GARY BENZ VICTOR LIM
+- **Course & Year:** BSIT 2
+- **Database Used:** MySQL
 
 ## Features
 - Add Task
