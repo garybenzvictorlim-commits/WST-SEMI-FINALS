@@ -1,59 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aurora — Personal Task Manager (Laravel Mini Project)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Project Code: WST21-PM-2026-SF
+Student Name:GARY BENZ VICTOR LIM
+Course & Year:BSIT 2
+Database Used: MySQL 
 
-## About Laravel
+## Features
+- Add Task
+- View Tasks
+- Edit Task
+- Delete Task
+- Update Status (Pending / Completed, with a one-click toggle)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## How these files fit into a fresh Laravel project
 
-## Learning Laravel
+These are the files you add on top of a new Laravel install — not a full project export (no vendor/, no node_modules/, no .env with real credentials).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 1. Create a new Laravel project
+```bash
+composer create-project laravel/laravel task-manager
+cd task-manager
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Copy in these files
+Copy each file from this package into the matching path in your new project, overwriting where needed:
+```
+app/Models/Task.php
+app/Http/Controllers/TaskController.php
+routes/web.php
+database/migrations/2026_01_01_000000_create_tasks_table.php
+resources/views/layouts/app.blade.php
+resources/views/tasks/index.blade.php
+resources/views/tasks/create.blade.php
+resources/views/tasks/edit.blade.php
+```
 
-## Laravel Sponsors
+### 3. Configure your database
+Edit `.env`:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=task_manager
+DB_USERNAME=root
+DB_PASSWORD=
+```
+Create the `task_manager` database in MySQL (e.g. via phpMyAdmin or `CREATE DATABASE task_manager;`).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 4. Run the migration
+```bash
+php artisan migrate
+```
 
-### Premium Partners
+### 5. Serve the app
+```bash
+php artisan serve
+```
+Visit `http://127.0.0.1:8000` — it redirects straight to the task board.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## App structure
+- **Route → Controller → Model → Database → Blade**, exactly as required:
+  - `routes/web.php` defines a resource route for `tasks` plus one extra `PATCH` route to toggle status.
+  - `TaskController` handles all CRUD logic and validation.
+  - `Task` is the Eloquent model (`app/Models/Task.php`), with an `isOverdue()` helper used in the view.
+  - The `tasks` migration creates the table with `id`, `task_name`, `description`, `status`, `due_date`, plus timestamps.
+  - Three Blade views (`index`, `create`, `edit`) extend a shared `layouts/app.blade.php` that holds the Aurora theme.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Notes
+- Status is toggled either from the edit form or the round checkbox button next to each task on the board.
+- The board has filter tabs (All / Pending / Completed) and live counts at the top.
+- Feel free to add screenshots here before submitting, per the assignment instructions.
