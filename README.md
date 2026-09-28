@@ -7,10 +7,27 @@
 
 ## Features
 - Add Task
+- <img width="1920" height="1080" alt="add-task-form" src="https://github.com/user-attachments/assets/9b62e135-ae7f-48d1-9527-6a373867d742" />
+
+
 - View Tasks
+- <img width="1920" height="1080" alt="view-tasks" src="https://github.com/user-attachments/assets/35e2c7aa-3f22-4c86-89f5-43899633a547" />
+
+
 - Edit Task
+- <img width="1920" height="1080" alt="edit-task-form" src="https://github.com/user-attachments/assets/ccd276f3-8849-45bc-818a-b6488b8a5e17" />
+- <img width="1920" height="1080" alt="edit-task-changed" src="https://github.com/user-attachments/assets/296b4e8e-eaa3-46a5-af30-cf650ce68e82" />
+- 
+
+
 - Delete Task
+- <img width="1920" height="1080" alt="delete-confirm" src="https://github.com/user-attachments/assets/cd2b8f68-89d9-4b30-9bc7-9718613b1947" />
+- <img width="1920" height="1080" alt="delete-result" src="https://github.com/user-attachments/assets/fb7b4e9c-1b5c-4c69-99e1-b97b42858da9" />
+
+
 - Update Status (Pending / Completed, with a one-click toggle)
+- <img width="1920" height="1080" alt="update-status" src="https://github.com/user-attachments/assets/e0295c7b-908a-473b-8806-11b0e0758481" />
+
 
 
 ---
